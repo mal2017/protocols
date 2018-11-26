@@ -7,31 +7,8 @@ for chromatin shearing as part of a ChIP-seq protocol.
 
 
 ## Workflow {-}
-```{r out.height='3.5in', out.width='10in', fig.height=1,fig.width=7, fig.align="center", echo=F}
-library(DiagrammeR)
-grViz("digraph Shearing {
-  node [shape = oval]
-  'Cell Lysate';  
-  node [shape = record]
-  'Add water to chamber'; 
-  'Place cup horn in chamber'; 'Start Cooling';
-  'Connect in/out tubing to cooler'; 'Set parameters';'Sonicate';
-  'Remove samples + Drain + Shut down cooler';
-  
-  'Cell Lysate' -> 'Place tubes in cup horn attachment'
-  'Place tubes in cup horn attachment' -> 'Place cup horn in chamber'
-  'Place cup horn in chamber' -> 'Sonicate'
-  'Sonicate' -> 'Remove samples + Drain + Shut down cooler'
-
-  'Connect in/out tubing to cooler' -> 'Add water to chamber'
-  'Add water to chamber' -> 'Start Cooling'
-  'Start Cooling' -> 'Set parameters'
-
-  'Set parameters' -> 'Sonicate'
-
-  
-}")
-```
+<!--html_preserve--><div id="htmlwidget-4f70c990ea821ddae889" style="width:10in;height:3.5in;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4f70c990ea821ddae889">{"x":{"diagram":"digraph Shearing {\n  node [shape = oval]\n  \"Cell Lysate\";  \n  node [shape = record]\n  \"Add water to chamber\"; \n  \"Place cup horn in chamber\"; \"Start Cooling\";\n  \"Connect in/out tubing to cooler\"; \"Set parameters\";\"Sonicate\";\n  \"Remove samples + Drain + Shut down cooler\";\n  \n  \"Cell Lysate\" -> \"Place tubes in cup horn attachment\"\n  \"Place tubes in cup horn attachment\" -> \"Place cup horn in chamber\"\n  \"Place cup horn in chamber\" -> \"Sonicate\"\n  \"Sonicate\" -> \"Remove samples + Drain + Shut down cooler\"\n\n  \"Connect in/out tubing to cooler\" -> \"Add water to chamber\"\n  \"Add water to chamber\" -> \"Start Cooling\"\n  \"Start Cooling\" -> \"Set parameters\"\n\n  \"Set parameters\" -> \"Sonicate\"\n\n  \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ## Protocol {-}
 
