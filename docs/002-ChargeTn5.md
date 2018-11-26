@@ -8,8 +8,8 @@ Yield can be stored at -20C.
 
 ## Workflow {-}
 
-<!--html_preserve--><div id="htmlwidget-7088423d8e482d2d931e" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7088423d8e482d2d931e">{"x":{"diagram":"\ndigraph Transposome {\n  node [shape = oval]\n  \"Annealed MEDS\"; \"Naked Transposase\"; \"2X Dialysis Buffer\"\n  node [shape = record]\n  \"Mix Assembly Reaction\"\n  \"Incubate @ RT\"; \"Store @ -20C\"; \"Remove Unbound MEDS\"\n  \n  {\"Annealed MEDS\" \"2X Dialysis Buffer\" \"Naked Transposase\"} -> \"Mix Assembly Reaction\"\n  \"Mix Assembly Reaction\" -> \"Incubate @ RT\"\n  \"Incubate @ RT\" -> {\"Remove Unbound MEDS\" \"Store @ -20C\"}\n  \"Remove Unbound MEDS\" -> \"Store @ -20C\"\n\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-d066652706eba1cd0482" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d066652706eba1cd0482">{"x":{"diagram":"\ndigraph Transposome {\n  node [shape = oval]\n  \"Annealed MEDS\"; \"Naked Transposase\"; \"2X Dialysis Buffer\"\n  node [shape = record]\n  \"Mix Assembly Reaction\"\n  \"Incubate @ RT\"; \"Store @ -20C\"; \"Remove Unbound MEDS\"\n  \n  {\"Annealed MEDS\" \"2X Dialysis Buffer\" \"Naked Transposase\"} -> \"Mix Assembly Reaction\"\n  \"Mix Assembly Reaction\" -> \"Incubate @ RT\"\n  \"Incubate @ RT\" -> {\"Remove Unbound MEDS\" \"Store @ -20C\"}\n  \"Remove Unbound MEDS\" -> \"Store @ -20C\"\n\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ## Reagents {-}
 
