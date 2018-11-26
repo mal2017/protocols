@@ -1,0 +1,303 @@
+# Cell Line ChIP (Bradner Lab protocol) {-}
+
+## Notes {-}
+
+This protocol is adapted from the ChIP protocol used in the Bradner Lab. Works well with 10-25 million cells.
+Unless otherwise noted keep all steps on ice. Work quickly and reduce handling of material as much as possible.
+For example, never pipette mix when resuspension in a rotator at 4c would suffice.
+
+When using a bioruptor, 0.5% SDS is usually optimal. 
+Before starting, make buffered stocks of HEPES and Tris.
+
+## Workflow {-}
+```{r out.height='3.5in', out.width='10in', fig.height=1,fig.width=7, fig.align="center", echo=F}
+library(DiagrammeR)
+grViz("
+digraph ChIP {
+  node [shape = oval]
+  'Cultured Cells';  
+  node [shape = record]
+  'Fixation'; 'Lysis'; 'Sonication'; 'IP';'Wash + Purification'
+  
+  'Cultured Cells' -> 'Fixation'
+  'Fixation' -> 'Lysis'
+  'Lysis' -> 'Sonication'
+  'Sonication' -> 'IP'
+  'IP' -> 'Wash + Purification'
+}
+")
+```
+
+## Protocol {-}
+
+1. Bead setup
+    + Wash 100ul Protein G DynaBeads 3x5min in 1ml blocking buffer using magnetic rack and aspirating all buffer with each wash.
+    + Add 500ul blocking buffer to tub with trapped beads
+    + Add antibody (usually 10ug) to this buffer. Do not bother resuspending manually. Instead rotate end over end at 4c for minimum 5 hrs.
+2. Fixation
+    + Make 11% formaldehyde fixation solution fresh (see below).
+    + Add volume of fixation solution equal to 1/10 of the culture volume.
+    + Incubate at RT on rocker for 10-15 minutes (optimize for cell type and IP target).
+    + Quench with volume of 2.5M glycine equal to 1/20 culture volume.
+    + If adherent:
+        + Rinse 2x with chilled PBS+PIC at 1X concentration.
+        + Add small volume of PBS+PIC (dependent on dish size) and scrape with cell scrapers or alternatively bent 200ul pipette tip.
+        + Transfer scraped cells to conical (50ml or 15ml).
+    + Wash:
+        + Spin at 4c @ 1350g for 5min.
+        + Aspirate supernatant.
+        + Resuspend in cold 1X PBS+PIC.
+        + Repeat 2x.
+    + Collect cells by spinning at 4c @ 1350g for 5min, aspirate supernatant.
+    + Cells are now ready for lysis. Alternatively snap freeze by dunking conical into LN~2~ and immediately transfer to -80c.
+3. Lysis
+    + Resuspend pellet in 5ml chilled LB1+PIC and incubate 10 minutes @ 4c while rotating.
+    + Pellet cells at 1350g for 5min @ 4c, aspirate supernatant.
+    + Repeat the previous two steps using LB2+PIC.
+    + Resuspend in appropriate volume SB+PIC with SDS at optimized percentage.
+4. Sonication
+    + Sonicate using parameters optimized for instrument and cell type.
+    + Spin sonicated material at 20,000g for 10min at 4c to clarify.
+    + Collect supernatant and transfer to a new tube. Discard pellet (debris).
+    + Set aside ~50ul for use as input (non-IP control) and store at -20c.
+    + Dilute remaining sonicated chromatin with SB+PIC such that %SDS < 0.1%, ideally targeting < 15ml total volume.
+5. IP
+    + Wash antibody-bead complex 3x5min in cold blocking buffer.
+    + Resuspend in 500ul cold blocking buffer.
+    + Gently add bead suspension to sonicated chromatin.
+    + Rotate end over end at 4c overnight.
+6. Bead Wash + Elution
+    + Collect bead-antibody-chromatin on magnetic rack, aspirate SB + debris.
+    + Wash end over end 5min at 4c in each of the following buffers. After each wash, collect beads with magnet, aspirate.
+        * Twice in SB
+        * High salt SB
+        * LiCl wash buffer
+        * TE+NaCl (add 10ul 5M NaCl for every 1ml TE)
+    + Remove as much of final wash as possible while beads are trapped by the magnetic rack. 
+    If necessary, spin at 4c at 960g for 3 minutes then return to magnetic rack and aspirate again.
+    + Gently resuspend in 210ul EB. Pipette mix vigorously or vortex.
+    + Elute chromatin by incubating at 65c for 15min. Vortex or pipette mix once every 5min.
+    + Spin at 20,000g to pellet beads and/or trap with magnetic rack.
+    + Transfer supernatant to fresh tube
+    + If input chromatin was saved, add EB to input chromatin such that IP and input are in the same volume.
+    + Reverse crosslinks overnight, ~16hrs at 65c.
+6. Purification
+    + Add 200ul TE to each tube.
+    + Add RNAseA to a concentration of 0.2mg/ml to each tube (8ul if stock is 10mg/ml).
+    + Mix gently then incubate at 37c for 2hrs.
+    + Add 7ul 300mM CaCl in 10mM ph8 Tris-HCL.
+    + Add proteinase K to a concentration of 0.2mg/ml (4ul if stock concentration is 20mg/ml).
+    + Mix and incubate 30min at 55c.
+    + Options:
+        1. Proceed with phenol:chloroform:isoamyl extraction
+        2. Use column based extraction (e.g. minelute).
+
+## Buffers {-}
+
+Buffers are shown as recipes for a reasonable volume and use stock solutions and/or reagents listed below.
+
+```{r echo=F}
+# 50ml
+Stock.Reagent <- c("1M HEPES-KOH, pH7.5","5M NaCl","0.5M EDTA, pH 8",
+                   "0.5M EGTA, pH 8", "37% Formaldehyde","ddH~2~O")
+
+target_conc <- c("50mM","100mM","1mM","0.5mM","11%",NA)
+
+amt <- c("2.5ml","1ml", "100ul", "50ul", "14.9ml","31.5ml")
+
+FixationBuffer <- data.frame(Ingredient=Stock.Reagent,
+                             Target.Conc=target_conc,
+                             To.Add=amt)
+
+knitr::kable(FixationBuffer, caption = '50mL 11% Formaldehyde Fixation Buffer',
+             format = 'pandoc')
+```
+
+```{r echo=F}
+# 50ml
+Stock.Reagent <- c("BSA","1X PBS")
+
+target_conc <- c("0.5%",NA)
+
+amt <- c("50mg","50mL")
+
+FixationBuffer <- data.frame(Ingredient=Stock.Reagent,
+                             Target.Conc=target_conc,
+                             To.Add=amt)
+
+knitr::kable(FixationBuffer, caption = '50mL Blocking Buffer',
+             format = 'pandoc')
+```
+
+```{r echo=F}
+# 250ml
+Stock.Reagent <- c("1M HEPES-KOH, pH7.5","5M NaCl","0.5M EDTA, pH 8",
+                   "glycerol","IGEPAL CA-630","Triton X-100","PIC","ddH~2~O")
+
+target_conc <- c("50mM","140mM","1mM","10%","0.5%","0.25%","See product",NA)
+
+amt <- c("12.5mL","7mL","0.5mL","25mL","1.25mL","625uL","See product","203mL")
+
+LysisBuffer1 <- data.frame(Ingredient=Stock.Reagent,
+                             Target.Conc=target_conc,
+                             To.Add=amt)
+
+knitr::kable(LysisBuffer1, caption = '250 mL Lysis Buffer 1 (LB1)',
+             format = 'pandoc')
+```
+
+```{r echo=F}
+# 250ml
+Stock.Reagent <- c("1M TRIS-HCL, pH8","5M NaCl","0.5M EDTA, pH 8",
+                   "0.5M EGTA, pH 8","PIC","ddH~2~O")
+
+target_conc <- c("10mM","200mM","1mM","0.5mM","see product",NA)
+
+amt <- c("2.5mL","10mL","0.5mL","0.25mL","see product","236.75mL")
+
+LysisBuffer2 <- data.frame(Ingredient=Stock.Reagent,
+                             Target.Conc=target_conc,
+                             To.Add=amt)
+
+knitr::kable(LysisBuffer2, caption = '250 mL Lysis Buffer 2 (LB2)',
+             format = 'pandoc')
+```
+
+
+```{r echo=F}
+# 250ml
+Stock.Reagent <- c("1M HEPES-KOH, pH7.5","5M NaCl","0.5M EDTA, pH 8",
+                   "0.5M EGTA, pH 8","Triton X-100","10% Na-Deoxycholate","10% SDS","PIC","ddH~2~O")
+
+target_conc <- c("50mM","140mM","1mM","1mM","1%","0.1%","optimize","see product",NA)
+
+amt <- c("12.5mL","7mL","0.5mL","0.5mL","2.5mL","2.5mL","optimize","see product","vol up to 250mL")
+
+SonicationBuffer <- data.frame(Ingredient=Stock.Reagent,
+                             Target.Conc=target_conc,
+                             To.Add=amt)
+
+knitr::kable(SonicationBuffer, caption = '250 mL Sonication Buffer (LB)',
+             format = 'pandoc')
+```
+
+```{r echo=F}
+# 250ml
+Stock.Reagent <- c("1M HEPES-KOH, pH7.5","5M NaCl","0.5M EDTA, pH 8",
+                   "0.5M EGTA, pH 8","Triton X-100","10% Na-Deoxycholate","10% SDS","PIC","ddH~2~O")
+
+target_conc <- c("50mM","500mM","1mM","1mM","1%","0.1%","0.1%","see product",NA)
+
+amt <- c("12.5mL","25mL","0.5mL","0.5mL","2.5mL","2.5mL","2.5mL","see product","vol up to 250mL")
+
+SonicationBufferHS <- data.frame(Ingredient=Stock.Reagent,
+                             Target.Conc=target_conc,
+                             To.Add=amt)
+
+knitr::kable(SonicationBufferHS, caption = '250 mL Sonication Buffer High Salt (LBHS)',
+             format = 'pandoc')
+```
+
+```{r echo=F}
+# 250ml
+Stock.Reagent <- c("1M Tris-HCL, pH8",
+                   "0.5M EDTA, pH 8",
+                   "5M LiCl",
+                   "IGEPAL CA-630",
+                   "10% Na-deoxycholate",
+                   "ddH~2~O")
+
+target_conc <- c("20mM","1mM","250mM","0.5%","0.5%",NA)
+
+amt <- c("5mL","0.5mL","12.5mL","1.25mL","12.5mL","218.25mL")
+
+LiClBuffer <- data.frame(Ingredient=Stock.Reagent,
+                             Target.Conc=target_conc,
+                             To.Add=amt)
+
+knitr::kable(LiClBuffer, caption = '250 mL LiCl Wash Buffer (LWB)',
+             format = 'pandoc')
+```
+
+```{r echo=F}
+# 250ml
+Stock.Reagent <- c("1M Tris-HCL, pH8",
+                   "0.5M EDTA, pH 8",
+                   "10% SDS",
+                   "ddH~2~O")
+
+target_conc <- c("50mM","10mM","1%",NA)
+
+amt <- c("12.5mL","5mL","25mL","207.5mL")
+
+ElutionBuffer <- data.frame(Ingredient=Stock.Reagent,
+                             Target.Conc=target_conc,
+                             To.Add=amt)
+
+knitr::kable(ElutionBuffer, caption = '250 mL Elution Buffer (EB)',
+             format = 'pandoc')
+```
+
+## Stocks {-}
+
+```{r echo=F}
+Stock <- c("1M HEPES-KOH, pH 7.5","5M NaCl","1M Tris-HCL, pH 8","5M LiCl","10% Na-Deoxycholate","10% SDS","1M (~10%) CaCl~2~", "2.5M Glycine")
+target_conc <- c(paste0(1,"M"),
+           paste0(5,"M"),
+           paste0(1,"M"),
+           paste0(5,"M"),
+           paste0(10,"%"),
+           paste0(10,"%"),
+           paste0(1,"M"), paste0(2.5,"M"))
+
+target_vol <- c(paste0(200,"mL"),
+                paste0(500,"mL"),
+                paste0(200,"mL"),
+                paste0(40,"mL"),
+                paste0(200,"mL"),
+                paste0(200,"mL"),
+                paste0(100,"mL"),
+                paste0(400,"mL"))
+mw <- c(238.3,58.44,121.14,42.39,NA,NA, 110.98, 75.07)
+
+solid=c(paste0(47.66,"g"),
+        paste0(146.1,"g"),
+        paste0(24.228,"g"),
+        paste0(8.478,"g"),
+        paste0(20,"g"),
+        paste0(20,"g"),
+        paste0(11.1,"g"),
+        paste0(75.07,"g"))
+
+adjustment <- c("KOH","-","HCL","-","-","-","-","-")
+
+ChIPStocks <- data.frame(Stock=Stock, 
+                         Target.Vol=target_vol, 
+                         Target.Conc=target_conc, 
+                         Reagent.MW=mw, 
+                         solid=solid, Adjustment = adjustment)
+
+knitr::kable(ChIPStocks, caption = 'ChIP stock solutions',
+             format = 'pandoc')
+```
+
+## Other Reagents + equipment {-}
+
+* Bovine Serum Albumin
+* Triton X-100
+* 1X PBS
+* 37% formaldehyde (with methanol)
+* glycerol
+* IGEPAL CA630
+* Sonicator and associated attachments
+* TPX tubes (if sonicating in BioRuptor)
+* Cell scrapers (alternatively bend a sterile pipette tip to a 90~o~ angle)
+* DynaBeads (usually protein G)
+* Desired antibody
+* TE Buffer
+* Protease inhibitors (Roche tablets or HALT cocktail; add phosphatase inhibitors for phosphorylated marks such as pSer polII)
+* Proteinase K
+* RNAse A
+* Magnetic Racks for 1.5ml eppendorf and optionally 15ml conical
+* Heat block, incubator, or water bath
+* Nuclease-free H~2~O

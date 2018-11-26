@@ -1,0 +1,49 @@
+# QSONICA Operation (ChIP-seq) {-}
+
+## Notes {-}
+
+This protocol explains operation of the Q800R3 with automated cooler
+for chromatin shearing as part of a ChIP-seq protocol.
+
+
+## Workflow {-}
+```{r out.height='3.5in', out.width='10in', fig.height=1,fig.width=7, fig.align="center", echo=F}
+library(DiagrammeR)
+grViz("digraph Shearing {
+  node [shape = oval]
+  'Cell Lysate';  
+  node [shape = record]
+  'Add water to chamber'; 
+  'Place cup horn in chamber'; 'Start Cooling';
+  'Connect in/out tubing to cooler'; 'Set parameters';'Sonicate';
+  'Remove samples + Drain + Shut down cooler';
+  
+  'Cell Lysate' -> 'Place tubes in cup horn attachment'
+  'Place tubes in cup horn attachment' -> 'Place cup horn in chamber'
+  'Place cup horn in chamber' -> 'Sonicate'
+  'Sonicate' -> 'Remove samples + Drain + Shut down cooler'
+
+  'Connect in/out tubing to cooler' -> 'Add water to chamber'
+  'Add water to chamber' -> 'Start Cooling'
+  'Start Cooling' -> 'Set parameters'
+
+  'Set parameters' -> 'Sonicate'
+
+  
+}")
+```
+
+## Protocol {-}
+
+1. Prep cell lysate early in the day. 
+    * Lysate can sit at 4c in sonication buffer 
+or several hours at least. Note that for QSONICA sonication 1% SDS is recommended.
+    * Divide the lysate such that approximately 1e7 cell equivalents of lysate are in 300ul
+    * Use 500ul thin wall tubes
+1. Place tubes in bottom of sample clamp.
+    * The clamp is composed of two 3d printed discs with holes for tubes around the disc as well 
+as a threaded central hole.
+    * Screw these discs together firmly but without flexing the 3d printed plastic.
+1. Slot the clamp+tube complex into the cup horn attachment
+    * This should just gently fit into the cup horn, no forcing necessary
+1. Place the cup horn attachment in the sonication chamber

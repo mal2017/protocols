@@ -1,0 +1,96 @@
+# Charging Naked Tn5 with MEDS (Picelli) {-}
+
+## Notes {-}
+
+This procotol is adapted from Picelli, et al. 2014 [@Picelli2014].
+
+Yield can be stored at -20C.
+
+## Workflow {-}
+
+```{r echo=F}
+library(DiagrammeR)
+
+grViz("
+digraph Transposome {
+  node [shape = oval]
+  'Annealed MEDS'; 'Naked Transposase'; '2X Dialysis Buffer'
+  node [shape = record]
+  'Mix Assembly Reaction'
+  'Incubate @ RT'; 'Store @ -20C'; 'Remove Unbound MEDS'
+  
+  {'Annealed MEDS' '2X Dialysis Buffer' 'Naked Transposase'} -> 'Mix Assembly Reaction'
+  'Mix Assembly Reaction' -> 'Incubate @ RT'
+  'Incubate @ RT' -> {'Remove Unbound MEDS' 'Store @ -20C'}
+  'Remove Unbound MEDS' -> 'Store @ -20C'
+
+}
+")
+
+```
+
+## Reagents {-}
+
+* HEPES
+* KOH
+* NaCl
+* EDTA
+* DTT
+* Triton X-100
+* Glycerol
+* Pre-annealed MEDS
+* Naked Transposase
+* DNA-binding Columns or AMPure XP beads (Agencourt)
+
+## Protocol {-}
+
+1. Mix Pre-annealed MEDS Oligos with Tn5.
+
+```{r echo=F}
+loading_reaction <- data.frame(Reagent = c("100uM equimolar oligos A/B in TE",
+                                           '100% Glycerol',
+                                           '2x Tn5 dialysis buffer',
+                                           'Tn5, A280=3.0 (1.85 mg/ml)'),
+                               Quantity = c(0.125,0.4,0.12,0.36),
+                               Unit = rep('Volume',4))
+
+knitr::kable(loading_reaction, caption = 'Tn5 Charging Reaction',
+             format = 'pandoc')
+```
+
+2. Incubate 60 minutes at room temperature.
+
+3. Charged Tn5 solution can be stored at -20. Unbound MEDS oligos should
+be removed from the solution before use. This can be done with a DNA binding column 
+([Zymo](https://www.zymoresearch.com/dna-clean-concentrator) recommended in original protocol) or Agencourt AMPure XP beads ([Beckman Coulter](https://www.beckmancoulter.com/wsrportal/wsrportal.portal?_nfpb=true&_windowLabel=UCM_RENDERER&_urlType=render&wlpUCM_RENDERER_path=%252Fwsr%252Fresearch-and-discovery%252Fproducts-and-services%252Fnucleic-acid-sample-preparation%252Fagencourt-ampure-xp-pcr-purification%252Findex.htm#2/10//0/25/1/0/asc/2/A63880///0/1//0/%2Fwsrportal%2Fwsr%2Fresearch-and-discovery%2Fproducts-and-services%2Fnucleic-acid-sample-preparation%2Fagencourt-ampure-xp-pcr-purification%2Findex.htm/)).
+
+## Buffers {-}
+
+### 2x Tn5 Dialysis Buffer {-}
+
+```{r, results='hold', echo=F}
+Reagent <- c('HEPES-KOH (pH 7.2)', 'NaCl', 'EDTA', 'DTT', 'Triton X-100',
+             'Glycerol', 'H20')
+
+Quantity <- c(1,400,4, 20,20,2,6.556)
+
+# https://stats.idre.ucla.edu/r/codefragments/greek_letters/
+
+Unit <- c("\\(mL\\)","\\(uL\\)","\\(uL\\)","\\(uL\\)","\\(uL\\)","\\(mL\\)","\\(mL\\)")
+
+Final <- c(paste0(100,"\\(m\\)","M"),
+           paste0(200,"\\(m\\)","M"),
+           paste0(0.2,"\\(m\\)","M"),
+           paste0(2,"\\(m\\)","M"),
+           '0.2%', '20%','-')
+
+Stock <- c('1M','5M','0.5M','1M','100%','100%','-')
+
+Tn5Dialysis2X <- data.frame(Reagent=Reagent,
+                            Quantity=Quantity,
+                            Unit=Unit,
+                            "Final Conc."=Final,
+                            Stock=Stock)
+knitr::kable(Tn5Dialysis2X, caption = '2X Tn5 Dialysis Buffer',
+             format = 'pandoc')
+```

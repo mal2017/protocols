@@ -1,0 +1,28 @@
+---
+title: "Protocols"
+subtitle: "`r system('git rev-parse --short HEAD', intern = TRUE)`"
+author: "Matt Lawlor"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::pdf_book
+toc-depth: 0
+documentclass: book
+classoption: openany
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+nocite: '@*'
+description: "A collection of protocols"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F,
+                      message = F,
+                      warning = F,
+                      error = F,
+                      cache = F)
+
+library(magrittr)
+```
+
+# Intro {-}
