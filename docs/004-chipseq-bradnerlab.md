@@ -10,8 +10,8 @@ When using a bioruptor, 0.5% SDS is usually optimal.
 Before starting, make buffered stocks of HEPES and Tris.
 
 ## Workflow {-}
-<!--html_preserve--><div id="htmlwidget-c31f94f0a97899b2b171" style="width:10in;height:3.5in;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c31f94f0a97899b2b171">{"x":{"diagram":"\ndigraph ChIP {\n  node [shape = oval]\n  \"Cultured Cells\";  \n  node [shape = record]\n  \"Fixation\"; \"Lysis\"; \"Sonication\"; \"IP\";\"Wash + Purification\"\n  \n  \"Cultured Cells\" -> \"Fixation\"\n  \"Fixation\" -> \"Lysis\"\n  \"Lysis\" -> \"Sonication\"\n  \"Sonication\" -> \"IP\"\n  \"IP\" -> \"Wash + Purification\"\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-f4ed820613ddaae8cd32" style="width:10in;height:3.5in;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f4ed820613ddaae8cd32">{"x":{"diagram":"\ndigraph ChIP {\n  node [shape = oval]\n  \"Cultured Cells\";  \n  node [shape = record]\n  \"Fixation\"; \"Lysis\"; \"Sonication\"; \"IP\";\"Wash + Purification\"\n  \n  \"Cultured Cells\" -> \"Fixation\"\n  \"Fixation\" -> \"Lysis\"\n  \"Lysis\" -> \"Sonication\"\n  \"Sonication\" -> \"IP\"\n  \"IP\" -> \"Wash + Purification\"\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ## Protocol {-}
 
