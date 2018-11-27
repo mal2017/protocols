@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="chip-rx.html">
-<link rel="next" href="bioruptor-operation.html">
+<link rel="prev" href="cell-line-chip-bradner-lab-protocol.html">
+<link rel="next" href="qsonica-operation-chip-seq.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -169,49 +169,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="qsonica-operation-chip-seq" class="section level1 unnumbered">
-<h1>QSONICA Operation (ChIP-seq)</h1>
-<div id="notes-5" class="section level2 unnumbered">
+<div id="chip-rx" class="section level1 unnumbered">
+<h1>ChIP-rx</h1>
+<div id="notes-4" class="section level2 unnumbered">
 <h2>Notes</h2>
-<p>This protocol explains operation of the Q800R3 with automated cooler for chromatin shearing as part of a ChIP-seq protocol.</p>
+<p>This protocol is adapted from another Bradner Lab protocol and can be used in conjunction with just about any other ChIP-seq protocol.</p>
+<p>The exogenous spike-in can be any non-human cell that can reliably be aligned to another genome. In practice this is usually drosophila or mouse. Just make sure that that the organism you choose expresses a similar enough protein to your target that your ab can cross react (and of course double-check that your ab is in fact supposed to cross react).</p>
+<p>Exogenous cells should be spiked in at a constant rate across all samples - usually 5% to 20% of your experimental cells is fine, but some protocols go higher.</p>
 </div>
-<div id="workflow-5" class="section level2 unnumbered">
+<div id="workflow-4" class="section level2 unnumbered">
 <h2>Workflow</h2>
-<div id="htmlwidget-fc9563429ba15ff93e4c" style="width:10in;height:3.5in;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fc9563429ba15ff93e4c">{"x":{"diagram":"digraph Shearing {\n  node [shape = oval]\n  \"Cell Lysate\";  \n  node [shape = record]\n  \"Add water to chamber\"; \n  \"Place cup horn in chamber\"; \"Start Cooling\";\n  \"Connect in/out tubing to cooler\"; \"Set parameters\";\"Sonicate\";\n  \"Remove samples + Drain + Shut down cooler\";\n  \n  \"Cell Lysate\" -> \"Place tubes in cup horn attachment\"\n  \"Place tubes in cup horn attachment\" -> \"Place cup horn in chamber\"\n  \"Place cup horn in chamber\" -> \"Sonicate\"\n  \"Sonicate\" -> \"Remove samples + Drain + Shut down cooler\"\n\n  \"Connect in/out tubing to cooler\" -> \"Add water to chamber\"\n  \"Add water to chamber\" -> \"Start Cooling\"\n  \"Start Cooling\" -> \"Set parameters\"\n\n  \"Set parameters\" -> \"Sonicate\"\n\n  \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-deaf3dd65d095e658262" style="width:10in;height:3.5in;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-deaf3dd65d095e658262">{"x":{"diagram":"\ndigraph ChIP_Rx {\n  node [shape = egg]\n  \"Lyse fixed cells of interest\";   \n  node [shape = record]\n  \"Lyse all fixed Rx cells in master mix for all samples\";\n  \"Add volume of master mix such that Rx cells/Human cells = ~5%-20%\"\n  \"Continue ChIP workflow\"\n  \n  \"Lyse fixed cells of interest\" -> \"Add volume of master mix such that Rx cells/Human cells = ~5%-20%\"\n  \"Lyse all fixed Rx cells in master mix for all samples\" -> \"Add volume of master mix such that Rx cells/Human cells = ~5%-20%\"\n  \"Add volume of master mix such that Rx cells/Human cells = ~5%-20%\" -> \"Continue ChIP workflow\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="protocol-5" class="section level2 unnumbered">
+<div id="protocol-4" class="section level2 unnumbered">
 <h2>Protocol</h2>
 <ol style="list-style-type: decimal">
-<li>Prep cell lysate early in the day.
-<ul>
-<li>Lysate can sit at 4c in sonication buffer or several hours at least. Note that for QSONICA sonication 1% SDS is recommended.</li>
-<li>Divide the lysate such that approximately 1e7 cell equivalents of lysate are in 300ul</li>
-<li>Use 500ul thin wall tubes</li>
-</ul></li>
-<li>Place tubes in bottom of sample clamp.
-<ul>
-<li>The clamp is composed of two 3d printed discs with holes for tubes around the disc as well as a threaded central hole.</li>
-<li>Screw these discs together firmly but without flexing the 3d printed plastic.</li>
-</ul></li>
-<li>Slot the clamp+tube complex into the cup horn attachment
-<ul>
-<li>This should just gently fit into the cup horn, no forcing necessary</li>
-</ul></li>
-<li>Attach chiller tubes and fill with appropriate amount of H<sub>2</sub>O.</li>
-<li>Place the cup horn attachment in the sonication chamber
-<ul>
-<li>Make sure that cup horn is seated flat and the the gears on the top of the cup horn and the sonication chamber are completely meshed</li>
-</ul></li>
-<li>Set desired sonication strength and on/off timing
-<ul>
-<li>:15/:45 at 70% for 30 minutes of total sonication is a good starting point</li>
-</ul></li>
-<li>Make sure that the chamber is closed and turn the machine on.
-<ul>
-<li>You can now walk away from the machine until it is finished. This will take several hours depending on the parameters used.</li>
-</ul></li>
-<li>Drain machine by attaching drainage hose and briefly running cooler pump.</li>
+<li>Process accurately counted cells of interest through the initial lysis step of a ChIP protocol</li>
+<li>Calculate the total number of Rx cells necessary and lyse together in a master mix</li>
+<li>Distribute the appropriate volume of master mix to each sample lysate</li>
+<li>Continue with ChIP as normal</li>
 </ol>
 
 </div>
@@ -221,8 +198,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="chip-rx.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bioruptor-operation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cell-line-chip-bradner-lab-protocol.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="qsonica-operation-chip-seq.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

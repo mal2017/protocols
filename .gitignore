@@ -1,5 +1,4 @@
 _bookdown_files/*
-html
-pdf
+*pdf
 _book/*
 .Rproj.user

@@ -1,0 +1,39 @@
+# ChIP-rx {-}
+
+## Notes {-}
+
+This protocol is adapted from another Bradner Lab protocol and can be
+used in conjunction with just about any other ChIP-seq protocol.
+
+The exogenous spike-in can be any non-human cell that can reliably be aligned to another genome.
+In practice this is usually drosophila or mouse. Just make sure that that the organism you choose
+expresses a similar enough protein to your target that your ab can cross react (and of course double-check
+that your ab is in fact supposed to cross react).
+
+Exogenous cells should be spiked in at a constant rate across all samples - usually 5% to 20% of
+your experimental cells is fine, but some protocols go higher.
+
+## Workflow {-}
+```{r out.height='3.5in', out.width='10in', fig.height=1,fig.width=7, fig.align="center", echo=F}
+library(DiagrammeR)
+grViz("
+digraph ChIP_Rx {
+  node [shape = egg]
+  'Lyse fixed cells of interest';   
+  node [shape = record]
+  'Lyse all fixed Rx cells in master mix for all samples';
+  'Add volume of master mix such that Rx cells/Human cells = ~5%-20%'
+  'Continue ChIP workflow'
+  
+  'Lyse fixed cells of interest' -> 'Add volume of master mix such that Rx cells/Human cells = ~5%-20%'
+  'Lyse all fixed Rx cells in master mix for all samples' -> 'Add volume of master mix such that Rx cells/Human cells = ~5%-20%'
+  'Add volume of master mix such that Rx cells/Human cells = ~5%-20%' -> 'Continue ChIP workflow'
+}")
+```
+
+## Protocol {-}
+
+1. Process accurately counted cells of interest through the initial lysis step of a ChIP protocol
+1. Calculate the total number of Rx cells necessary and lyse together in a master mix
+1. Distribute the appropriate volume of master mix to each sample lysate
+1. Continue with ChIP as normal

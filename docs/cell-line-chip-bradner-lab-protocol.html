@@ -25,7 +25,7 @@
 <meta name="author" content="Matt Lawlor">
 
 
-<meta name="date" content="2018-11-26">
+<meta name="date" content="2018-11-27">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="atac-seq.html">
-<link rel="next" href="qsonica-operation-chip-seq.html">
+<link rel="next" href="chip-rx.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -137,10 +137,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#stocks"><i class="fa fa-check"></i>Stocks</a></li>
 <li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#other-reagents-equipment"><i class="fa fa-check"></i>Other Reagents + equipment</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="chip-rx.html"><a href="chip-rx.html"><i class="fa fa-check"></i>ChIP-rx</a><ul>
+<li class="chapter" data-level="" data-path="chip-rx.html"><a href="chip-rx.html#notes-4"><i class="fa fa-check"></i>Notes</a></li>
+<li class="chapter" data-level="" data-path="chip-rx.html"><a href="chip-rx.html#workflow-4"><i class="fa fa-check"></i>Workflow</a></li>
+<li class="chapter" data-level="" data-path="chip-rx.html"><a href="chip-rx.html#protocol-4"><i class="fa fa-check"></i>Protocol</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="qsonica-operation-chip-seq.html"><a href="qsonica-operation-chip-seq.html"><i class="fa fa-check"></i>QSONICA Operation (ChIP-seq)</a><ul>
-<li class="chapter" data-level="" data-path="qsonica-operation-chip-seq.html"><a href="qsonica-operation-chip-seq.html#notes-4"><i class="fa fa-check"></i>Notes</a></li>
-<li class="chapter" data-level="" data-path="qsonica-operation-chip-seq.html"><a href="qsonica-operation-chip-seq.html#workflow-4"><i class="fa fa-check"></i>Workflow</a></li>
-<li class="chapter" data-level="" data-path="qsonica-operation-chip-seq.html"><a href="qsonica-operation-chip-seq.html#protocol-4"><i class="fa fa-check"></i>Protocol</a></li>
+<li class="chapter" data-level="" data-path="qsonica-operation-chip-seq.html"><a href="qsonica-operation-chip-seq.html#notes-5"><i class="fa fa-check"></i>Notes</a></li>
+<li class="chapter" data-level="" data-path="qsonica-operation-chip-seq.html"><a href="qsonica-operation-chip-seq.html#workflow-5"><i class="fa fa-check"></i>Workflow</a></li>
+<li class="chapter" data-level="" data-path="qsonica-operation-chip-seq.html"><a href="qsonica-operation-chip-seq.html#protocol-5"><i class="fa fa-check"></i>Protocol</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bioruptor-operation.html"><a href="bioruptor-operation.html"><i class="fa fa-check"></i>Bioruptor Operation</a></li>
 <li class="chapter" data-level="" data-path="common-stock-solutions.html"><a href="common-stock-solutions.html"><i class="fa fa-check"></i>Common Stock Solutions</a><ul>
@@ -173,8 +178,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="workflow-3" class="section level2 unnumbered">
 <h2>Workflow</h2>
-<div id="htmlwidget-f4ed820613ddaae8cd32" style="width:10in;height:3.5in;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f4ed820613ddaae8cd32">{"x":{"diagram":"\ndigraph ChIP {\n  node [shape = oval]\n  \"Cultured Cells\";  \n  node [shape = record]\n  \"Fixation\"; \"Lysis\"; \"Sonication\"; \"IP\";\"Wash + Purification\"\n  \n  \"Cultured Cells\" -> \"Fixation\"\n  \"Fixation\" -> \"Lysis\"\n  \"Lysis\" -> \"Sonication\"\n  \"Sonication\" -> \"IP\"\n  \"IP\" -> \"Wash + Purification\"\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ad587444ecfea52ccc4e" style="width:10in;height:3.5in;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ad587444ecfea52ccc4e">{"x":{"diagram":"\ndigraph ChIP {\n  node [shape = oval]\n  \"Cultured Cells\";  \n  node [shape = record]\n  \"Fixation\"; \"Lysis\"; \"Sonication\"; \"IP\";\"Wash + Purification\"\n  \n  \"Cultured Cells\" -> \"Fixation\"\n  \"Fixation\" -> \"Lysis\"\n  \"Lysis\" -> \"Sonication\"\n  \"Sonication\" -> \"IP\"\n  \"IP\" -> \"Wash + Purification\"\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="protocol-3" class="section level2 unnumbered">
 <h2>Protocol</h2>
@@ -726,7 +731,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
         </div>
       </div>
 <a href="atac-seq.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="qsonica-operation-chip-seq.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="chip-rx.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -756,7 +761,7 @@ gitbook.start({
 "size": 2
 },
 "edit": null,
-"download": [["protocols.pdf", "PDF"]],
+"download": null,
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
