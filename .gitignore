@@ -1,4 +1,5 @@
 _bookdown_files/*
 *pdf
 _book/*
+docs/*md
 .Rproj.user
