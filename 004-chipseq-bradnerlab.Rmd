@@ -119,13 +119,13 @@ Stock.Reagent <- c("BSA","1X PBS")
 
 target_conc <- c("0.5%",NA)
 
-amt <- c("50mg","50mL")
+amt <- c("125mg","25mL")
 
 FixationBuffer <- data.frame(Ingredient=Stock.Reagent,
                              Target.Conc=target_conc,
                              To.Add=amt)
 
-knitr::kable(FixationBuffer, caption = '50mL Blocking Buffer',
+knitr::kable(FixationBuffer, caption = '25mL Blocking Buffer',
              format = 'pandoc')
 ```
 
