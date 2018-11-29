@@ -25,14 +25,14 @@
 <meta name="author" content="Matt Lawlor">
 
 
-<meta name="date" content="2018-11-28">
+<meta name="date" content="2018-11-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="cell-line-chip-bradner-lab-protocol.html">
+<link rel="prev" href="cell-line-chip-seq.html">
 <link rel="next" href="qsonica-operation-chip-seq.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -129,13 +129,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="atac-seq.html"><a href="atac-seq.html#lysis-buffer"><i class="fa fa-check"></i>Lysis Buffer</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html"><i class="fa fa-check"></i>Cell Line ChIP (Bradner Lab protocol)</a><ul>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#notes-3"><i class="fa fa-check"></i>Notes</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#workflow-3"><i class="fa fa-check"></i>Workflow</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#protocol-3"><i class="fa fa-check"></i>Protocol</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#buffers-3"><i class="fa fa-check"></i>Buffers</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#stocks"><i class="fa fa-check"></i>Stocks</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#other-reagents-equipment"><i class="fa fa-check"></i>Other Reagents + equipment</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html"><i class="fa fa-check"></i>Cell Line ChIP-seq</a><ul>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#notes-3"><i class="fa fa-check"></i>Notes</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#workflow-3"><i class="fa fa-check"></i>Workflow</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#protocol-3"><i class="fa fa-check"></i>Protocol</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#buffers-3"><i class="fa fa-check"></i>Buffers</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#other-reagents-equipment"><i class="fa fa-check"></i>Other Reagents + equipment</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chip-rx.html"><a href="chip-rx.html"><i class="fa fa-check"></i>ChIP-rx</a><ul>
 <li class="chapter" data-level="" data-path="chip-rx.html"><a href="chip-rx.html#notes-4"><i class="fa fa-check"></i>Notes</a></li>
@@ -150,7 +149,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="bioruptor-operation.html"><a href="bioruptor-operation.html"><i class="fa fa-check"></i>Bioruptor Operation</a></li>
 <li class="chapter" data-level="" data-path="common-stock-solutions.html"><a href="common-stock-solutions.html"><i class="fa fa-check"></i>Common Stock Solutions</a><ul>
 <li class="chapter" data-level="" data-path="common-stock-solutions.html"><a href="common-stock-solutions.html#m-mgcl2-250ml"><i class="fa fa-check"></i>1M MgCl2, 250ml</a></li>
-<li class="chapter" data-level="" data-path="common-stock-solutions.html"><a href="common-stock-solutions.html#m-naclm"><i class="fa fa-check"></i>5M NaClm</a></li>
+<li class="chapter" data-level="0.1" data-path="common-stock-solutions.html"><a href="common-stock-solutions.html#chip-seq"><i class="fa fa-check"></i><b>0.1</b> ChIP-seq</a></li>
 </ul></li>
 </ul>
 
@@ -179,8 +178,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="workflow-4" class="section level2 unnumbered">
 <h2>Workflow</h2>
-<div id="htmlwidget-51cf72c6f75c31df1306" style="width:10in;height:3.5in;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-51cf72c6f75c31df1306">{"x":{"diagram":"\ndigraph ChIP_Rx {\n  node [shape = egg]\n  \"Lyse fixed cells of interest\";   \n  node [shape = record]\n  \"Lyse all fixed Rx cells in master mix for all samples\";\n  \"Add volume of master mix such that Rx cells/Human cells = ~5%-20%\"\n  \"Continue ChIP workflow\"\n  \n  \"Lyse fixed cells of interest\" -> \"Add volume of master mix such that Rx cells/Human cells = ~5%-20%\"\n  \"Lyse all fixed Rx cells in master mix for all samples\" -> \"Add volume of master mix such that Rx cells/Human cells = ~5%-20%\"\n  \"Add volume of master mix such that Rx cells/Human cells = ~5%-20%\" -> \"Continue ChIP workflow\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-39cc10641e7675032eea" style="width:10in;height:3.5in;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-39cc10641e7675032eea">{"x":{"diagram":"\ndigraph ChIP_Rx {\n  node [shape = egg]\n  \"Lyse fixed cells of interest\";   \n  node [shape = record]\n  \"Lyse all fixed Rx cells in master mix for all samples\";\n  \"Add volume of master mix such that Rx cells/Human cells = ~5%-20%\"\n  \"Continue ChIP workflow\"\n  \n  \"Lyse fixed cells of interest\" -> \"Add volume of master mix such that Rx cells/Human cells = ~5%-20%\"\n  \"Lyse all fixed Rx cells in master mix for all samples\" -> \"Add volume of master mix such that Rx cells/Human cells = ~5%-20%\"\n  \"Add volume of master mix such that Rx cells/Human cells = ~5%-20%\" -> \"Continue ChIP workflow\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="protocol-4" class="section level2 unnumbered">
 <h2>Protocol</h2>
@@ -198,7 +197,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="cell-line-chip-bradner-lab-protocol.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cell-line-chip-seq.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="qsonica-operation-chip-seq.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

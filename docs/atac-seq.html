@@ -25,7 +25,7 @@
 <meta name="author" content="Matt Lawlor">
 
 
-<meta name="date" content="2018-11-28">
+<meta name="date" content="2018-11-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="charging-naked-tn5-with-meds-picelli.html">
-<link rel="next" href="cell-line-chip-bradner-lab-protocol.html">
+<link rel="next" href="cell-line-chip-seq.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -129,13 +129,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="atac-seq.html"><a href="atac-seq.html#lysis-buffer"><i class="fa fa-check"></i>Lysis Buffer</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html"><i class="fa fa-check"></i>Cell Line ChIP (Bradner Lab protocol)</a><ul>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#notes-3"><i class="fa fa-check"></i>Notes</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#workflow-3"><i class="fa fa-check"></i>Workflow</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#protocol-3"><i class="fa fa-check"></i>Protocol</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#buffers-3"><i class="fa fa-check"></i>Buffers</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#stocks"><i class="fa fa-check"></i>Stocks</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#other-reagents-equipment"><i class="fa fa-check"></i>Other Reagents + equipment</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html"><i class="fa fa-check"></i>Cell Line ChIP-seq</a><ul>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#notes-3"><i class="fa fa-check"></i>Notes</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#workflow-3"><i class="fa fa-check"></i>Workflow</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#protocol-3"><i class="fa fa-check"></i>Protocol</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#buffers-3"><i class="fa fa-check"></i>Buffers</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#other-reagents-equipment"><i class="fa fa-check"></i>Other Reagents + equipment</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chip-rx.html"><a href="chip-rx.html"><i class="fa fa-check"></i>ChIP-rx</a><ul>
 <li class="chapter" data-level="" data-path="chip-rx.html"><a href="chip-rx.html#notes-4"><i class="fa fa-check"></i>Notes</a></li>
@@ -150,7 +149,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="bioruptor-operation.html"><a href="bioruptor-operation.html"><i class="fa fa-check"></i>Bioruptor Operation</a></li>
 <li class="chapter" data-level="" data-path="common-stock-solutions.html"><a href="common-stock-solutions.html"><i class="fa fa-check"></i>Common Stock Solutions</a><ul>
 <li class="chapter" data-level="" data-path="common-stock-solutions.html"><a href="common-stock-solutions.html#m-mgcl2-250ml"><i class="fa fa-check"></i>1M MgCl2, 250ml</a></li>
-<li class="chapter" data-level="" data-path="common-stock-solutions.html"><a href="common-stock-solutions.html#m-naclm"><i class="fa fa-check"></i>5M NaClm</a></li>
+<li class="chapter" data-level="0.1" data-path="common-stock-solutions.html"><a href="common-stock-solutions.html#chip-seq"><i class="fa fa-check"></i><b>0.1</b> ChIP-seq</a></li>
 </ul></li>
 </ul>
 
@@ -206,30 +205,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2>Buffers</h2>
 <div id="lysis-buffer" class="section level3 unnumbered">
 <h3>Lysis Buffer</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Reagent &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;TRIS-HCL ph 7.4&quot;</span>, <span class="st">&quot;NaCl&quot;</span>, <span class="st">&quot;MgCl2&quot;</span>, <span class="st">&quot;IGEPAL&quot;</span>, <span class="st">&quot;H20&quot;</span>)
-
-Quantity &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">8.33</span>,<span class="dv">5</span>,<span class="fl">0.75</span>,<span class="fl">0.25</span>,<span class="fl">235.67</span>)
-
-<span class="co"># https://stats.idre.ucla.edu/r/codefragments/greek_letters/</span>
-
-Unit &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">(mL</span><span class="ch">\\</span><span class="st">)&quot;</span>,<span class="st">&quot;</span><span class="ch">\\</span><span class="st">(mL</span><span class="ch">\\</span><span class="st">)&quot;</span>,<span class="st">&quot;</span><span class="ch">\\</span><span class="st">(mL</span><span class="ch">\\</span><span class="st">)&quot;</span>,<span class="st">&quot;</span><span class="ch">\\</span><span class="st">(mL</span><span class="ch">\\</span><span class="st">)&quot;</span>,<span class="st">&quot;</span><span class="ch">\\</span><span class="st">(mL</span><span class="ch">\\</span><span class="st">)&quot;</span>)
-
-Final &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">paste0</span>(<span class="dv">10</span>,<span class="st">&quot;</span><span class="ch">\\</span><span class="st">(m</span><span class="ch">\\</span><span class="st">)&quot;</span>,<span class="st">&quot;M&quot;</span>),
-           <span class="kw">paste0</span>(<span class="dv">10</span>,<span class="st">&quot;</span><span class="ch">\\</span><span class="st">(m</span><span class="ch">\\</span><span class="st">)&quot;</span>,<span class="st">&quot;M&quot;</span>),
-           <span class="kw">paste0</span>(<span class="dv">3</span>,<span class="st">&quot;</span><span class="ch">\\</span><span class="st">(m</span><span class="ch">\\</span><span class="st">)&quot;</span>,<span class="st">&quot;M&quot;</span>),
-           <span class="kw">paste0</span>(<span class="fl">0.1</span>,<span class="st">&quot;%&quot;</span>),
-           <span class="st">&quot;-&quot;</span>)
-
-
-Stock &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;300mM&quot;</span>, <span class="st">&quot;500mM&quot;</span>, <span class="st">&quot;1M&quot;</span>,<span class="st">&quot;100%&quot;</span>,<span class="st">&quot;-&quot;</span>)
-
-LysisBuffer &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Reagent=</span>Reagent,
-                            <span class="dt">Quantity=</span>Quantity,
-                            <span class="dt">Unit=</span>Unit,
-                            <span class="st">&quot;Final Conc.&quot;</span>=Final,
-                            <span class="dt">Stock=</span>Stock)
-knitr<span class="op">::</span><span class="kw">kable</span>(LysisBuffer, <span class="dt">caption =</span> <span class="st">&#39;ATAC Lysis Buffer&#39;</span>,
-             <span class="dt">format =</span> <span class="st">&#39;pandoc&#39;</span>)</code></pre></div>
 <table>
 <caption><span id="tab:unnamed-chunk-1">Table 3: </span>ATAC Lysis Buffer</caption>
 <thead>
@@ -289,7 +264,7 @@ knitr<span class="op">::</span><span class="kw">kable</span>(LysisBuffer, <span 
         </div>
       </div>
 <a href="charging-naked-tn5-with-meds-picelli.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="cell-line-chip-bradner-lab-protocol.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cell-line-chip-seq.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

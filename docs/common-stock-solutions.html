@@ -25,7 +25,7 @@
 <meta name="author" content="Matt Lawlor">
 
 
-<meta name="date" content="2018-11-28">
+<meta name="date" content="2018-11-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -129,13 +129,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="atac-seq.html"><a href="atac-seq.html#lysis-buffer"><i class="fa fa-check"></i>Lysis Buffer</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html"><i class="fa fa-check"></i>Cell Line ChIP (Bradner Lab protocol)</a><ul>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#notes-3"><i class="fa fa-check"></i>Notes</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#workflow-3"><i class="fa fa-check"></i>Workflow</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#protocol-3"><i class="fa fa-check"></i>Protocol</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#buffers-3"><i class="fa fa-check"></i>Buffers</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#stocks"><i class="fa fa-check"></i>Stocks</a></li>
-<li class="chapter" data-level="" data-path="cell-line-chip-bradner-lab-protocol.html"><a href="cell-line-chip-bradner-lab-protocol.html#other-reagents-equipment"><i class="fa fa-check"></i>Other Reagents + equipment</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html"><i class="fa fa-check"></i>Cell Line ChIP-seq</a><ul>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#notes-3"><i class="fa fa-check"></i>Notes</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#workflow-3"><i class="fa fa-check"></i>Workflow</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#protocol-3"><i class="fa fa-check"></i>Protocol</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#buffers-3"><i class="fa fa-check"></i>Buffers</a></li>
+<li class="chapter" data-level="" data-path="cell-line-chip-seq.html"><a href="cell-line-chip-seq.html#other-reagents-equipment"><i class="fa fa-check"></i>Other Reagents + equipment</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="chip-rx.html"><a href="chip-rx.html"><i class="fa fa-check"></i>ChIP-rx</a><ul>
 <li class="chapter" data-level="" data-path="chip-rx.html"><a href="chip-rx.html#notes-4"><i class="fa fa-check"></i>Notes</a></li>
@@ -150,7 +149,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="bioruptor-operation.html"><a href="bioruptor-operation.html"><i class="fa fa-check"></i>Bioruptor Operation</a></li>
 <li class="chapter" data-level="" data-path="common-stock-solutions.html"><a href="common-stock-solutions.html"><i class="fa fa-check"></i>Common Stock Solutions</a><ul>
 <li class="chapter" data-level="" data-path="common-stock-solutions.html"><a href="common-stock-solutions.html#m-mgcl2-250ml"><i class="fa fa-check"></i>1M MgCl2, 250ml</a></li>
-<li class="chapter" data-level="" data-path="common-stock-solutions.html"><a href="common-stock-solutions.html#m-naclm"><i class="fa fa-check"></i>5M NaClm</a></li>
+<li class="chapter" data-level="0.1" data-path="common-stock-solutions.html"><a href="common-stock-solutions.html#chip-seq"><i class="fa fa-check"></i><b>0.1</b> ChIP-seq</a></li>
 </ul></li>
 </ul>
 
@@ -178,8 +177,87 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Bring up to 250ml</li>
 </ol>
 </div>
-<div id="m-naclm" class="section level2 unnumbered">
-<h2>5M NaClm</h2>
+<div id="chip-seq" class="section level2">
+<h2><span class="header-section-number">0.1</span> ChIP-seq</h2>
+<table>
+<caption><span id="tab:unnamed-chunk-1">Table 3: </span>ChIP stock solutions</caption>
+<thead>
+<tr class="header">
+<th align="left">Stock</th>
+<th align="left">Target.Vol</th>
+<th align="left">Target.Conc</th>
+<th align="right">Reagent.MW</th>
+<th align="left">solid</th>
+<th align="left">Adjustment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1M HEPES-KOH, pH 7.5</td>
+<td align="left">200mL</td>
+<td align="left">1M</td>
+<td align="right">238.30</td>
+<td align="left">47.66g</td>
+<td align="left">KOH</td>
+</tr>
+<tr class="even">
+<td align="left">5M NaCl</td>
+<td align="left">500mL</td>
+<td align="left">5M</td>
+<td align="right">58.44</td>
+<td align="left">146.1g</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left">1M Tris-HCL, pH 8</td>
+<td align="left">200mL</td>
+<td align="left">1M</td>
+<td align="right">121.14</td>
+<td align="left">24.228g</td>
+<td align="left">HCL</td>
+</tr>
+<tr class="even">
+<td align="left">5M LiCl</td>
+<td align="left">40mL</td>
+<td align="left">5M</td>
+<td align="right">42.39</td>
+<td align="left">8.478g</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left">10% Na-Deoxycholate</td>
+<td align="left">200mL</td>
+<td align="left">10%</td>
+<td align="right">NA</td>
+<td align="left">20g</td>
+<td align="left">-</td>
+</tr>
+<tr class="even">
+<td align="left">10% SDS</td>
+<td align="left">200mL</td>
+<td align="left">10%</td>
+<td align="right">NA</td>
+<td align="left">20g</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left">1M (~10%) CaCl<sub>2</sub></td>
+<td align="left">100mL</td>
+<td align="left">1M</td>
+<td align="right">110.98</td>
+<td align="left">11.1g</td>
+<td align="left">-</td>
+</tr>
+<tr class="even">
+<td align="left">2.5M Glycine</td>
+<td align="left">400mL</td>
+<td align="left">2.5M</td>
+<td align="right">75.07</td>
+<td align="left">75.07g</td>
+<td align="left">-</td>
+</tr>
+</tbody>
+</table>
 
 <div id="refs" class="references">
 <div>
