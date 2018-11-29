@@ -1,19 +1,18 @@
-# Cell Line ChIP (Bradner Lab protocol) {-}
+# Cell Line ChIP-seq {-}
 
 ## Notes {-}
 
-This protocol is adapted from the ChIP protocol used in the Bradner Lab. Works well with 10-25 million cells.
+This protocol is adapted from the ChIP protocol used in the Bradner Lab and Christoph Bock's tagmentation v1.1. Works well with 10-25 million cells.
 Unless otherwise noted keep all steps on ice. Work quickly and reduce handling of material as much as possible.
 For example, never pipette mix when resuspension in a rotator at 4c would suffice.
 
-When using a bioruptor, 0.5% SDS is usually optimal. 
+When using a bioruptor, 0.5% SDS is usually optimal. Qsonica requires 1% SDS.
 Before starting, make buffered stocks of HEPES and Tris.
 
 ## Workflow {-}
 ```{r out.height='3.5in', out.width='10in', fig.height=1,fig.width=7, fig.align="center", echo=F}
 library(DiagrammeR)
-grViz("
-digraph ChIP {
+grViz("digraph ChIP {
   node [shape = oval]
   'Cultured Cells';  
   node [shape = record]
@@ -24,17 +23,13 @@ digraph ChIP {
   'Lysis' -> 'Sonication'
   'Sonication' -> 'IP'
   'IP' -> 'Wash + Purification'
-}
-")
+}")
 ```
 
 ## Protocol {-}
 
-1. Bead setup
-    + Wash 100ul Protein G DynaBeads 3x5min in 1ml blocking buffer using magnetic rack and aspirating all buffer with each wash.
-    + Add 500ul blocking buffer to tub with trapped beads
-    + Add antibody (usually 10ug) to this buffer. Do not bother resuspending manually. Instead rotate end over end at 4c for minimum 5 hrs.
-2. Fixation
+
+1. Fixation (Can be performed well in advance)
     + Make 11% formaldehyde fixation solution fresh (see below).
     + Add volume of fixation solution equal to 1/10 of the culture volume.
     + Incubate at RT on rocker for 10-15 minutes (optimize for cell type and IP target).
@@ -50,23 +45,28 @@ digraph ChIP {
         + Repeat 2x.
     + Collect cells by spinning at 4c @ 1350g for 5min, aspirate supernatant.
     + Cells are now ready for lysis. Alternatively snap freeze by dunking conical into LN~2~ and immediately transfer to -80c.
-3. Lysis
-    + Resuspend pellet in 5ml chilled LB1+PIC and incubate 10 minutes @ 4c while rotating.
+2. Bead setup (Day 0 or Day 1)
+    + Wash 25ul Protein G DynaBeads 3x5min in 1ml blocking buffer using magnetic rack and aspirating all buffer with each wash.
+    + Add 500ul blocking buffer to tub with trapped beads
+    + Add antibody (usually 5-10ug) to this buffer. Do not bother resuspending manually. Instead rotate end over end at 4c for minimum 5 hrs.
+3. Lysis (Day 1)
+    + Resuspend pellet in chilled LB1+PIC  (>=1ml/1e6 cells) and incubate 10 minutes @ 4c while rotating.
     + Pellet cells at 1350g for 5min @ 4c, aspirate supernatant.
     + Repeat the previous two steps using LB2+PIC.
     + Resuspend in appropriate volume SB+PIC with SDS at optimized percentage.
-4. Sonication
-    + Sonicate using parameters optimized for instrument and cell type.
+4. Sonication (Day 1)
+    + Sonicate using parameters optimized for instrument, cell type, and cell number.
     + Spin sonicated material at 20,000g for 10min at 4c to clarify.
     + Collect supernatant and transfer to a new tube. Discard pellet (debris).
-    + Set aside ~50ul for use as input (non-IP control) and store at -20c.
-    + Dilute remaining sonicated chromatin with SB+PIC such that %SDS < 0.1%, ideally targeting < 15ml total volume.
-5. IP
+    + Set aside ~10% total sonicated volume for use as input (non-IP control) and store at -20c.
+    + Dilute remaining sonicated chromatin with SB+PIC such that %SDS < 0.1%.
+        * Chromatin can be stored at 4c for several days.
+5. IP (Day 1)
     + Wash antibody-bead complex 3x5min in cold blocking buffer.
     + Resuspend in 500ul cold blocking buffer.
     + Gently add bead suspension to sonicated chromatin.
     + Rotate end over end at 4c overnight.
-6. Bead Wash + Elution
+6. Bead Wash (Day 2)
     + Collect bead-antibody-chromatin on magnetic rack, aspirate SB + debris.
     + Wash end over end 5min at 4c in each of the following buffers. After each wash, collect beads with magnet, aspirate.
         * Twice in SB
@@ -74,27 +74,161 @@ digraph ChIP {
         * LiCl wash buffer
         * TE+NaCl (add 10ul 5M NaCl for every 1ml TE)
     + Remove as much of final wash as possible while beads are trapped by the magnetic rack. 
-    If necessary, spin at 4c at 960g for 3 minutes then return to magnetic rack and aspirate again.
-    + Gently resuspend in 210ul EB. Pipette mix vigorously or vortex.
-    + Elute chromatin by incubating at 65c for 15min. Vortex or pipette mix once every 5min.
-    + Spin at 20,000g to pellet beads and/or trap with magnetic rack.
-    + Transfer supernatant to fresh tube
-    + If input chromatin was saved, add EB to input chromatin such that IP and input are in the same volume.
-    + Reverse crosslinks overnight, ~16hrs at 65c.
-6. Purification
-    + Add 200ul TE to each tube.
-    + Add RNAseA to a concentration of 0.2mg/ml to each tube (8ul if stock is 10mg/ml).
-    + Mix gently then incubate at 37c for 2hrs.
-    + Add 7ul 300mM CaCl in 10mM ph8 Tris-HCL.
-    + Add proteinase K to a concentration of 0.2mg/ml (4ul if stock concentration is 20mg/ml).
-    + Mix and incubate 30min at 55c.
-    + Options:
-        1. Proceed with phenol:chloroform:isoamyl extraction
-        2. Use column based extraction (e.g. minelute).
+    + If necessary, spin at 4c at 960g for 3 minutes then return to magnetic rack and aspirate again.
+    + At this point, dna can be eluted in EB (see below), crosslinks reversed, RNAse and Proteinase K treated, and then 
+    purified via column or phenol chloroform extraction. Alteratively, continue on
+    to produce NGS libraries via tagmentation.
+7. IP Tagmentation (Day 2)
+    + Wash Beads once in 10mM Tris HCl, pH 8.
+    + Resuspend beads in 25ul Tagmentation Reaction.
+    + Incubate at 37c for up to 10 minutes (optimize if necessary).
+    + Add 1ml cold Tagmentation Wash Buffer and incubate 5 minutes on ice.
+    + Wash beads
+        * 2x in Tagmentation Wash Buffer
+        * 2x in TE  
+        
+```{r echo=F}
+# per sample
+Stock.Reagent <- c("1X Tagmentation Buffer",
+                   "Tn5 Enzyme",
+                   "Target-Ab-Bead Conjugate")
+
+vol<- c("24ul","1ul","-")
+
+
+TagmentationMixture <- data.frame(Ingredient=Stock.Reagent,
+                             Vol=vol)
+
+knitr::kable(TagmentationMixture, caption = 'Per sample IP Tagmentation Reaction',
+             format = 'pandoc')
+```
+        
+8. Elution (Day 2)
+    + Trap beads on magnet and remove TE.
+    + Resuspend in 200ul EB and incubate at 65c for 15 minutes, vortexing every 5 minutes.
+    + Collect beads by centrifuging @ 20,000g or trap on magnetic rack and transfer to fresh tube.
+8. Reverse crosslinks (Day 2)
+    + Resuspend in 48ul Elution Buffer.
+    + At this point, retrieve input samples and bring to the same volume as IP samples using Elution Buffer.
+    + Reverse crosslinks at 65c overnight.
+9. Purification (Day 3)
+    + Add 50ul TE to each tube.
+    + Add RNase A to a final concentration of 0.2mg/ml (2ul if stock is 10mg/ml).
+    + Mix gently and incubate at 37c for 2hrs.
+    + Add 1.75ul 300mM CaCl~2~ in 10mM Tris-HCL, pH8.
+    + Add Proteinase K to a concentration of 0.2mg/ml (1ul if stock is 20mg/ml).
+    + Mix gently and incubate at 55c for 30min.
+    + Purify Using Minelute Kit or similar column-based extraction.
+10. Input Tagmentation (Day 3)
+    + Purified input DNA can be quantified via Qubit.
+    + 2.5ng should be set aside for tagmentation.
+    + Create master mix of 1:10 diluted Transposase.
+    + Create a 5ul reaction for each 2.5ng of input DNA (see per sample recipe below).
+    + Incubate 5min at 55c.
+    + During incubation prepare 0.6% SDS master mix (60ul 10% SDS in 940ul Nuclease Free H~2~0).
+    + Add 1ul SDS mix to each input reaction and incubate 5min @ RT.
+    + Bring up to 10ul with Nuclease Free H~2~0.
+    + Continue with amplification alongside IP samples.
+    
+```{r echo=F}
+# per sample
+Stock.Reagent <- c("2.5ng Eluted input DNA",
+                   "0.1X Tn5 Enzyme",
+                   "1X Tagmentation Buffer")
+
+vol<- c("-","1ul","Up to 5ul")
+
+TagmentationMixture <- data.frame(Ingredient=Stock.Reagent,
+                             Vol=vol)
+
+knitr::kable(TagmentationMixture, caption = 'Per sample Input Tagmentation Reaction',
+             format = 'pandoc')
+```
+
+11. Amplification (Day 3 or 4)
+    + Prepare for each sample a Library Amplification Reaction as specified in the table below.
+    + Preamplify in a thermocycler according to the following program:
+        1. 72c for 5min
+        1. 98c for 30 seconds
+        1. 5 cycles:
+            1. 98c for 10 seconds
+            1. 63c for 30 seconds
+            1. 72c for 1 minute
+    + Store this preamplified material at 4c.
+    + Prepare qPCR side reaction as described in table below.
+    + Using a qPCR instrument, perform the following:
+        1. 98c for 30 seconds
+        1. 20 cycles:
+            1. 98c for 10 seconds
+            1. 63c for 30 seconds
+            1. 72c for 1 min
+    + Plot linear Rn vs cycle count and find the cycle count that corresponds to 1/4 the maximum Rn value. 
+    his is the number of additional cycles to perform in a standard thermocycler for each sample.
+    + In a standard thermocycler, perform the following:
+        1. 98c for 30 seconds
+        1. *X* cycles:
+            1. 98c for 10 seconds
+            1. 63c for 30 seconds
+            1. 72c for 1 min
+    
+```{r echo=F}
+# per sample
+Stock.Reagent <- c("Tagmented DNA",
+                   "Nuclease Free H~2~0",
+                   "Nextera AD1 25uM",
+                   "Nextera AD2.X 25uM",
+                   "NEBnext HiFidelity 2X PCR Master Mix")
+
+vol<- c("10ul","10ul","2.5ul", "2.5ul","25ul")
+
+AmpReaction <- data.frame(Ingredient=Stock.Reagent,
+                             Vol=vol)
+
+knitr::kable(AmpReaction, caption = '25ul Library Amplification Reaction',
+             format = 'pandoc')
+```
+
+```{r echo=F}
+Stock.Reagent <- c("Tagmented DNA",
+                   "Nuclease Free H~2~0",
+                   "Nextera AD1 25uM",
+                   "Nextera AD2.X 25uM",
+                   "100x Sybr Green",
+                   "NEBnext HiFidelity 2X PCR Master Mix")
+
+vol<- c("5ul","4.41ul","0.25ul", "0.25ul", "0.09ul","5ul")
+
+SideReaction <- data.frame(Ingredient=Stock.Reagent,
+                             Vol=vol)
+
+
+knitr::kable(SideReaction, caption = 'qPCR Side Reaction',
+             format = 'pandoc')
+```
+
+12. Library Cleanup (Day 3 or 4)
+    + Add 1.8x volume Ampure XP Beads and mix 10x with pipette, then incubate 10min at RT.
+    + Trap with magnet for ~10min to ensure full bead engagement with magnet. Remove supernatant.
+    + Wash briefly 2x with fresh 80% EtOH and remove EtOH.
+    + Dry with open caps for approx. 5min. Can be placed in incubator for additional speed.
+    + Remove from magnets and resuspend beads in 50ul Nuclease Free H~2~0.
+    + Incubate 10 minutes @ RT.
+    + Place back on magnet and trap beads for 5min, then carefully place supernatant in fresh 1.7ml tube.
+13. Size Selection (Day 3 or 4)
+    + Add 32.5ul (65% of 50ul) Ampure XP Beads, mix 10x with pipette and incubate 10min @ RT.
+    + Trap beads on magnet for 10min, then transfer supernatant to fresh tube, discarding the beads.
+    + Add 12.5ul of Ampure XP Beads, mix 10x by pipette, and incubate 10min @ RT.
+    + Trap beads with magnet for 10min and discard supernatant.
+    + Wash beads twice with fresh 80% EtOH and remove EtOH.
+    + Dry with caps open 5min on magnet.
+    + Remove from magnet and resuspend beads in 15ul Nuclease Free H~2~0. Incubate 10min.
+    + Return tubes to magnet rack and trap beads for 5min.
+    + Transfer supernatant to new tube. This is the final library.
 
 ## Buffers {-}
 
-Buffers are shown as recipes for a reasonable volume and use stock solutions and/or reagents listed below.
+Buffers are shown as recipes for a reasonable volume and use reagents
+listed at the end of this document in the Stock Solutions section.
 
 ```{r echo=F}
 # 50ml
@@ -194,7 +328,7 @@ SonicationBufferHS <- data.frame(Ingredient=Stock.Reagent,
                              Target.Conc=target_conc,
                              To.Add=amt)
 
-knitr::kable(SonicationBufferHS, caption = '250 mL Sonication Buffer High Salt (LBHS)',
+knitr::kable(SonicationBufferHS, caption = '250 mL Sonication Buffer High Salt (SBHS)',
              format = 'pandoc')
 ```
 
@@ -219,6 +353,8 @@ knitr::kable(LiClBuffer, caption = '250 mL LiCl Wash Buffer (LWB)',
              format = 'pandoc')
 ```
 
+
+
 ```{r echo=F}
 # 250ml
 Stock.Reagent <- c("1M Tris-HCL, pH8",
@@ -238,46 +374,25 @@ knitr::kable(ElutionBuffer, caption = '250 mL Elution Buffer (EB)',
              format = 'pandoc')
 ```
 
-## Stocks {-}
-
 ```{r echo=F}
-Stock <- c("1M HEPES-KOH, pH 7.5","5M NaCl","1M Tris-HCL, pH 8","5M LiCl","10% Na-Deoxycholate","10% SDS","1M (~10%) CaCl~2~", "2.5M Glycine")
-target_conc <- c(paste0(1,"M"),
-           paste0(5,"M"),
-           paste0(1,"M"),
-           paste0(5,"M"),
-           paste0(10,"%"),
-           paste0(10,"%"),
-           paste0(1,"M"), paste0(2.5,"M"))
+# 250ml
+Stock.Reagent <- c("1M Tris-HCL, pH8",
+                   "5M NaCl",
+                   "0.5M EDTA, pH 8",
+                   "10% SDS",
+                   "Na-Deoxycholate",
+                   "Triton X-100",
+                   "ddH~2~O")
 
-target_vol <- c(paste0(200,"mL"),
-                paste0(500,"mL"),
-                paste0(200,"mL"),
-                paste0(40,"mL"),
-                paste0(200,"mL"),
-                paste0(200,"mL"),
-                paste0(100,"mL"),
-                paste0(400,"mL"))
-mw <- c(238.3,58.44,121.14,42.39,NA,NA, 110.98, 75.07)
+target_conc <- c("10mM","140mM","1mM","0.1%","0.1%","1%",NA)
 
-solid=c(paste0(47.66,"g"),
-        paste0(146.1,"g"),
-        paste0(24.228,"g"),
-        paste0(8.478,"g"),
-        paste0(20,"g"),
-        paste0(20,"g"),
-        paste0(11.1,"g"),
-        paste0(75.07,"g"))
+amt <- c("2.5mL","7.5mL","0.5mL","2.5mL","2.5mL","2.5mL","232mL")
 
-adjustment <- c("KOH","-","HCL","-","-","-","-","-")
+ElutionBuffer <- data.frame(Ingredient=Stock.Reagent,
+                             Target.Conc=target_conc,
+                             To.Add=amt)
 
-ChIPStocks <- data.frame(Stock=Stock, 
-                         Target.Vol=target_vol, 
-                         Target.Conc=target_conc, 
-                         Reagent.MW=mw, 
-                         solid=solid, Adjustment = adjustment)
-
-knitr::kable(ChIPStocks, caption = 'ChIP stock solutions',
+knitr::kable(ElutionBuffer, caption = '250 mL Tagmentation Wash Buffer',
              format = 'pandoc')
 ```
 

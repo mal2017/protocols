@@ -5,4 +5,45 @@
 1. MgCl~2~ - 6H~2~O (203.3 g/M): 50.825 g
 1. Bring up to 250ml 
 
-## 5M NaClm {-}
+## ChIP-seq
+
+```{r echo=F}
+Stock <- c("1M HEPES-KOH, pH 7.5","5M NaCl","1M Tris-HCL, pH 8","5M LiCl","10% Na-Deoxycholate","10% SDS","1M (~10%) CaCl~2~", "2.5M Glycine")
+target_conc <- c(paste0(1,"M"),
+           paste0(5,"M"),
+           paste0(1,"M"),
+           paste0(5,"M"),
+           paste0(10,"%"),
+           paste0(10,"%"),
+           paste0(1,"M"), paste0(2.5,"M"))
+
+target_vol <- c(paste0(200,"mL"),
+                paste0(500,"mL"),
+                paste0(200,"mL"),
+                paste0(40,"mL"),
+                paste0(200,"mL"),
+                paste0(200,"mL"),
+                paste0(100,"mL"),
+                paste0(400,"mL"))
+mw <- c(238.3,58.44,121.14,42.39,NA,NA, 110.98, 75.07)
+
+solid=c(paste0(47.66,"g"),
+        paste0(146.1,"g"),
+        paste0(24.228,"g"),
+        paste0(8.478,"g"),
+        paste0(20,"g"),
+        paste0(20,"g"),
+        paste0(11.1,"g"),
+        paste0(75.07,"g"))
+
+adjustment <- c("KOH","-","HCL","-","-","-","-","-")
+
+ChIPStocks <- data.frame(Stock=Stock, 
+                         Target.Vol=target_vol, 
+                         Target.Conc=target_conc, 
+                         Reagent.MW=mw, 
+                         solid=solid, Adjustment = adjustment)
+
+knitr::kable(ChIPStocks, caption = 'ChIP stock solutions',
+             format = 'pandoc')
+```

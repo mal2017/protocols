@@ -13,7 +13,7 @@ wait
 sleep 2
 
 git add . && \
-git commit -m "${COMMIT_MESSAGE}"
+git commit -m "update site ${COMMIT_MESSAGE}"
 
 wait
 sleep 2
