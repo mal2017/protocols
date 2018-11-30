@@ -108,15 +108,15 @@ knitr::kable(TagmentationMixture, caption = 'Per sample IP Tagmentation Reaction
     + Resuspend in 200ul EB and incubate at 65c for 15 minutes, vortexing every 5 minutes.
     + Collect beads by centrifuging @ 20,000g or trap on magnetic rack and transfer to fresh tube.
 8. Reverse crosslinks (Day 2)
-    + Resuspend in 48ul Elution Buffer.
+    + Resuspend in 200ul Elution Buffer.
     + At this point, retrieve input samples and bring to the same volume as IP samples using Elution Buffer.
     + Reverse crosslinks at 65c overnight.
 9. Purification (Day 3)
-    + Add 50ul TE to each tube.
-    + Add RNase A to a final concentration of 0.2mg/ml (2ul if stock is 10mg/ml).
+    + Add 200ul TE to each tube.
+    + Add RNase A to a final concentration of 0.2mg/ml (8ul if stock is 10mg/ml).
     + Mix gently and incubate at 37c for 2hrs.
-    + Add 1.75ul 300mM CaCl~2~ in 10mM Tris-HCL, pH8.
-    + Add Proteinase K to a concentration of 0.2mg/ml (1ul if stock is 20mg/ml).
+    + Add 7ul 300mM CaCl~2~ in 10mM Tris-HCL, pH8.
+    + Add Proteinase K to a concentration of 0.2mg/ml (4ul if stock is 20mg/ml).
     + Mix gently and incubate at 55c for 30min.
     + Purify Using Minelute Kit or similar column-based extraction.
 10. Input Tagmentation (Day 3)
