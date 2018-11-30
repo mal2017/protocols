@@ -25,7 +25,7 @@
 <meta name="author" content="Matt Lawlor">
 
 
-<meta name="date" content="2018-11-29">
+<meta name="date" content="2018-11-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -177,8 +177,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="workflow-3" class="section level2 unnumbered">
 <h2>Workflow</h2>
-<div id="htmlwidget-f5d4a96d9a3b21e42dc2" style="width:10in;height:3.5in;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f5d4a96d9a3b21e42dc2">{"x":{"diagram":"digraph ChIP {\n  node [shape = oval]\n  \"Cultured Cells\";  \n  node [shape = record]\n  \"Fixation\"; \"Lysis\"; \"Sonication\"; \"IP\";\"Wash + Purification\"\n  \n  \"Cultured Cells\" -> \"Fixation\"\n  \"Fixation\" -> \"Lysis\"\n  \"Lysis\" -> \"Sonication\"\n  \"Sonication\" -> \"IP\"\n  \"IP\" -> \"Wash + Purification\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9712699f19c2965d52a7" style="width:10in;height:3.5in;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9712699f19c2965d52a7">{"x":{"diagram":"digraph ChIP {\n  node [shape = oval]\n  \"Cultured Cells\";  \n  node [shape = record]\n  \"Fixation\"; \"Lysis\"; \"Sonication\"; \"IP\";\"Wash + Purification\"\n  \n  \"Cultured Cells\" -> \"Fixation\"\n  \"Fixation\" -> \"Lysis\"\n  \"Lysis\" -> \"Sonication\"\n  \"Sonication\" -> \"IP\"\n  \"IP\" -> \"Wash + Purification\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="protocol-3" class="section level2 unnumbered">
 <h2>Protocol</h2>
@@ -295,17 +295,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li>Reverse crosslinks (Day 2)
 <ul>
-<li>Resuspend in 48ul Elution Buffer.</li>
+<li>Resuspend in 200ul Elution Buffer.</li>
 <li>At this point, retrieve input samples and bring to the same volume as IP samples using Elution Buffer.</li>
 <li>Reverse crosslinks at 65c overnight.</li>
 </ul></li>
 <li>Purification (Day 3)
 <ul>
-<li>Add 50ul TE to each tube.</li>
-<li>Add RNase A to a final concentration of 0.2mg/ml (2ul if stock is 10mg/ml).</li>
+<li>Add 200ul TE to each tube.</li>
+<li>Add RNase A to a final concentration of 0.2mg/ml (8ul if stock is 10mg/ml).</li>
 <li>Mix gently and incubate at 37c for 2hrs.</li>
-<li>Add 1.75ul 300mM CaCl<sub>2</sub> in 10mM Tris-HCL, pH8.</li>
-<li>Add Proteinase K to a concentration of 0.2mg/ml (1ul if stock is 20mg/ml).</li>
+<li>Add 7ul 300mM CaCl<sub>2</sub> in 10mM Tris-HCL, pH8.</li>
+<li>Add Proteinase K to a concentration of 0.2mg/ml (4ul if stock is 20mg/ml).</li>
 <li>Mix gently and incubate at 55c for 30min.</li>
 <li>Purify Using Minelute Kit or similar column-based extraction.</li>
 </ul></li>
