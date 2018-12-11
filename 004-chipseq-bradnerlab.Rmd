@@ -1,3 +1,9 @@
+---
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
 # Cell Line ChIP-seq {-}
 
 ## Notes {-}
@@ -13,16 +19,17 @@ Before starting, make buffered stocks of HEPES and Tris.
 ```{r out.height='3.5in', out.width='10in', fig.height=1,fig.width=7, fig.align="center", echo=F}
 library(DiagrammeR)
 grViz("digraph ChIP {
-  node [shape = oval]
-  'Cultured Cells';  
-  node [shape = record]
-  'Fixation'; 'Lysis'; 'Sonication'; 'IP';'Wash + Purification'
-  
-  'Cultured Cells' -> 'Fixation'
   'Fixation' -> 'Lysis'
   'Lysis' -> 'Sonication'
   'Sonication' -> 'IP'
-  'IP' -> 'Wash + Purification'
+  'IP' -> 'Tagment IP' 
+  'IP' -> 'Store input'
+  'Store input' -> Purification
+  IP -> Wash -> Purification
+  'Tagment IP' -> Purification
+  Purification -> 'Tagment input'
+  Purification -> Amplify
+  'Tagment input' -> Amplify
 }")
 ```
 
@@ -128,6 +135,7 @@ knitr::kable(TagmentationMixture, caption = 'Per sample IP Tagmentation Reaction
     + During incubation prepare 0.6% SDS master mix (60ul 10% SDS in 940ul Nuclease Free H~2~0).
     + Add 1ul SDS mix to each input reaction and incubate 5min @ RT.
     + Bring up to 10ul with Nuclease Free H~2~0.
+    + Use Minelute or other column based purification method to purify DNA. Elute in ~10ul.
     + Continue with amplification alongside IP samples.
     
 ```{r echo=F}
